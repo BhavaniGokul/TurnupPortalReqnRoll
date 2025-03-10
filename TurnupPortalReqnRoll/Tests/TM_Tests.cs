@@ -44,7 +44,7 @@ namespace TurnupPortalBha.Tests
         {
             //Edit Time record
             TMPage tMPageobj = new TMPage();
-            tMPageobj.EditTimeRecord(driver, "");            
+            tMPageobj.EditTimeRecord(driver, "", "");            
         }
 
         [Test, Order(3)]

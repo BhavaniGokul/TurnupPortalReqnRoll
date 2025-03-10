@@ -14,7 +14,7 @@ namespace TurnupPortalBha.Pages
 {
     public class TMPage
     {
-        public IWebElement goToLastPageButton, saveButton, savedCode, newDescription, editedCode, codeInputField, descriptionInputField, priceInputField;
+        public IWebElement goToLastPageButton, saveButton, savedCode, newDescription, editedCode, editedDescription, codeInputField, descriptionInputField, priceInputField;
         public void CreateTimeRecord(IWebDriver driver)
         {
 
@@ -98,7 +98,7 @@ namespace TurnupPortalBha.Pages
         }
 
         //*********Edit the saved time record**********
-        public void EditTimeRecord(IWebDriver driver,string code)
+        public void EditTimeRecord(IWebDriver driver,string code, string description)
             {
             //Fluent Wait applied
             Wait.WaitToBeVisible(driver, "XPath", "//span[contains(text(),'Go to the last page')]", 5);
@@ -119,23 +119,24 @@ namespace TurnupPortalBha.Pages
             codeInputField = driver.FindElement(By.XPath("//input[@id='Code']"));
             codeInputField.Clear();
             codeInputField.SendKeys(code);
+            Thread.Sleep(2000);
 
             //Edit Description in the decription TextBox
             descriptionInputField = driver.FindElement(By.XPath("//input[@id='Description']"));
             descriptionInputField.Clear();
-            descriptionInputField.SendKeys("This is a description- edited");
-
+            descriptionInputField.SendKeys(description);
+            Thread.Sleep(2000);
 
             //Enter Price in the price per unit  
 
             //Fluent Wait applied
-           /* Wait.WaitToBeClickable(driver, "XPath", "(//span[contains(@class,'numerictextbox')]//input)[1]", 5);
-           
-            priceInputField = driver.FindElement(By.XPath("(//span[contains(@class,'numerictextbox')]//input)[1]"));
-            priceInputField.Click();
-            priceInputField.Clear();
-            priceInputField.SendKeys("8400");//throwing element not interactable  exception for price per unit input field
-           */
+            /* Wait.WaitToBeClickable(driver, "XPath", "(//span[contains(@class,'numerictextbox')]//input)[1]", 5);
+
+             priceInputField = driver.FindElement(By.XPath("(//span[contains(@class,'numerictextbox')]//input)[1]"));
+             priceInputField.Click();
+             priceInputField.Clear();
+             priceInputField.SendKeys("8400");//throwing element not interactable  exception for price per unit input field
+            */
             Thread.Sleep(2000);
             
             //Click on Save button
@@ -176,7 +177,12 @@ namespace TurnupPortalBha.Pages
             editedCode = driver.FindElement(By.XPath("//table[@role='grid']/tbody/tr[last()]/td[1]"));
             return editedCode.Text;
         }
-        
+        public string GetEditedDescription(IWebDriver driver)
+        {
+            editedDescription = driver.FindElement(By.XPath("//table[@role='grid']/tbody/tr[last()]/td[3]"));
+            return editedDescription.Text;
+        }
+
         public void DeleteTimeRecord(IWebDriver driver)
         {
             //Fluent applied to delete button

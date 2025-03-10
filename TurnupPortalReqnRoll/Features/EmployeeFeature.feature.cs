@@ -20,19 +20,19 @@ namespace TurnupPortalReqnRoll.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TMFeature")]
+    [NUnit.Framework.DescriptionAttribute("Employee Feature")]
     [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class TMFeatureFeature
+    public partial class EmployeeFeatureFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TMFeature", "As a Turnupportal Admin user, I would like to create, edit and delete Time Materi" +
-                "al records\r\nso I can manage the employee time and materials successfully", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Employee Feature", "As a Turnupportal Admin user,\r\nI would like to create, edit and delete Employee r" +
+                "ecords\r\nso I can manage the employees successfully", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "TMFeature.feature"
+#line 1 "EmployeeFeature.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -85,29 +85,23 @@ namespace TurnupPortalReqnRoll.Features
         
         public virtual async System.Threading.Tasks.Task FeatureBackgroundAsync()
         {
-#line 6
-#line hidden
 #line 7
-await testRunner.GivenAsync("I logged into turnup portal successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 8
-await testRunner.AndAsync("I navigated to the Time and Material page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+await testRunner.GivenAsync("I logged into turnup portal successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 9
+await testRunner.AndAsync("I navigated to Employee page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create new time and material record with valid data")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        [NUnit.Framework.CategoryAttribute("bvt")]
-        [NUnit.Framework.CategoryAttribute("timeandmaterial")]
-        public async System.Threading.Tasks.Task CreateNewTimeAndMaterialRecordWithValidData()
+        [NUnit.Framework.DescriptionAttribute("Create new employee record successfully")]
+        public async System.Threading.Tasks.Task CreateNewEmployeeRecordSuccessfully()
         {
-            string[] tagsOfScenario = new string[] {
-                    "regression",
-                    "bvt",
-                    "timeandmaterial"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Create new time and material record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Create new employee record successfully", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -118,49 +112,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 6
+#line 7
 await this.FeatureBackgroundAsync();
 #line hidden
 #line 12
-await testRunner.WhenAsync("I create a new time and material record", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+await testRunner.WhenAsync("I create a new employee record", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 13
-await testRunner.ThenAsync("The record should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit exiting time and material record with valid data")]
-        [NUnit.Framework.TestCaseAttribute("Industry Connect", "Laptop", null)]
-        [NUnit.Framework.TestCaseAttribute("TA Job Ready", "Mouse", null)]
-        [NUnit.Framework.TestCaseAttribute("Edited Record", "Keyboard", null)]
-        public async System.Threading.Tasks.Task EditExitingTimeAndMaterialRecordWithValidData(string code, string description, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Code", code);
-            argumentsOfScenario.Add("Description", description);
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Edit exiting time and material record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 6
-await this.FeatureBackgroundAsync();
-#line hidden
-#line 16
-await testRunner.WhenAsync(string.Format("I update the \'{0}\' and \'{1}\' on an existing time record", code, description), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 17
-await testRunner.ThenAsync(string.Format("The record should have the updated \'{0}\' and \'{1}\'", code, description), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+await testRunner.ThenAsync("The employee record should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

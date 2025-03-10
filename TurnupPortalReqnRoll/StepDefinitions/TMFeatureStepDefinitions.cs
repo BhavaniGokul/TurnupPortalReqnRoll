@@ -12,19 +12,24 @@ namespace TurnupPortalReqnRoll.StepDefinitions
     {
         TMPage tMPageobj = new TMPage();
 
+        [BeforeScenario]
+        public void SetupSteps()
+        {
+
+            //Open browser
+            driver = new ChromeDriver();
+        }
+
         [Given("I logged into turnup portal successfully")]
         public void GivenILoggedIntoTurnupPortalSuccessfully()
         {
-            //Open browser
-            driver = new ChromeDriver();
-
             //Login Page object initialization and definition
             LoginPage loginPageObj = new LoginPage();
             loginPageObj.LoginActions(driver);                     
 
         }
 
-        [When("I navigated to the Time and Material page")]
+        [Given("I navigated to the Time and Material page")]
         public void GivenINavigatedToTheTimeAndMaterialPage()
         {
             //Home page object initialization and definition
@@ -50,19 +55,26 @@ namespace TurnupPortalReqnRoll.StepDefinitions
             Assert.That(newDescription == "This is a description for Bha001", "**Actual description and expected description do not match**");
 
         }
-        [When("I update the {string} on an existing time record")]
-        public void WhenIUpdateTheOnAnExistingTimeRecord(string code)
+
+        [When("I update the {string} and {string} on an existing time record")]
+        public void WhenIUpdateTheOnAnExistingTimeRecord(string code, string description)
         {
-            tMPageobj.EditTimeRecord(driver, code);
+            tMPageobj.EditTimeRecord(driver, code, description);
 
         }
 
-        [Then("The record should have the updated {string}")]
-        public void ThenTheRecordShouldHaveTheUpdated(string code)
+        [Then("The record should have the updated {string} and {string}")]
+        public void ThenTheRecordShouldHaveTheUpdated(string code,string description)
         {
             string editedCode = tMPageobj.GetEditedCode(driver);
             Assert.That(editedCode == code, "**Expected edited code does not match with the Actual edited code**");
+            string editedDescription = tMPageobj.GetEditedDescription(driver);
+            Assert.That(editedDescription == description, "**Expected edited description does not match with the Actual edited description**");
         }
-
+        [AfterScenario]
+        public void CloseTestRun()
+        {
+            driver.Quit();
+        }
     }
 }
